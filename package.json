@@ -1,0 +1,42 @@
+{
+  "name": "pure-http-client-starter",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --filter frontend dev & pnpm --filter backend dev",
+    "build": "pnpm --filter frontend build && pnpm --filter backend build && pnpm --filter shared build && pnpm --filter pure-http-client-lib build",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "pnpm --filter backend build",
+    "build:shared": "pnpm --filter shared build",
+    "build:sdk": "pnpm --filter pure-http-client-lib build",
+    "lint": "pnpm exec eslint apps/ packages/",
+    "format": "pnpm exec prettier --check \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\"",
+    "format:fix": "pnpm exec prettier --write \"apps/**/*.{ts,tsx}\" \"packages/**/*.{ts,tsx}\"",
+    "test": "pnpm --filter frontend test",
+    "health-check": "bash check-project-health.sh"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "@vitejs/plugin-react": "^3.1.0",
+    "commitlint": "^19.8.0",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3",
+    "vitest": "^3.1.2"
+  },
+  "dependencies": {
+    "detect-port": "^2.1.0"
+  }
+}

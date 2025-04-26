@@ -1,0 +1,48 @@
+# Node Modules
+node_modules/
+
+# Build Outputs
+dist/
+build/
+out/
+
+# Environment Variables
+.env
+.env.*
+apps/**/.env
+packages/**/.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Testing
+coverage/
+jest-coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Terraform
+infra/**/.terraform/
+infra/**/.terraform.lock.hcl
+
+# Misc
+*.swp
+*.swo
+*.bak
+
+# GitHub Actions cache
+.github/actions/cache/
