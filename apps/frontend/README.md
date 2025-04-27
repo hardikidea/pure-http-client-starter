@@ -1,54 +1,150 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Pure HTTP Client Starter - XP Frontend
 
-Currently, two official plugins are available:
+[![Build Status](https://github.com/hardikidea/pure-http-client-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/hardikidea/pure-http-client-starter/actions)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📚 Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Professional XP style frontend project built with:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Vite + React + TypeScript
+- Zod for form validation
+- Immer for immutable state updates
+- Lodash for utility functions
+- ESLint, Prettier, Husky, lint-staged
+- Vitest + Testing Library for unit/integration tests
+- GitHub Actions CI/CD
+- Fully XP/TDD workflow
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|:------|:-----------|
+| Frontend Framework | React |
+| Bundler | Vite |
+| Validation | Zod |
+| Utilities | Immer, Lodash |
+| Styling | TailwindCSS (optional) |
+| Testing | Vitest, @testing-library/react |
+| CI/CD | GitHub Actions |
+
+---
+
+## 🏗 Folder Structure
+
+```
+apps/frontend/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── services/
+│   ├── utils/
+│   ├── routes/
+│   ├── App.tsx
+│   └── main.tsx
+├── public/
+├── tests/
+├── vitest.config.ts
+├── tsconfig.json
+├── .env.dev
+├── .eslintrc.js
+├── .prettierrc
+├── index.html
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Quick Start
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 1. Install dependencies
+
+```bash
+pnpm install
 ```
+
+### 2. Run Project Locally
+
+```bash
+pnpm dev
+```
+
+Frontend will be running at:
+
+```
+http://localhost:5173
+```
+
+---
+
+### 3. Project Health Check
+
+```bash
+pnpm lint
+pnpm format
+pnpm test
+```
+
+✅ Lint → Format → Tests → Full health ✅
+
+---
+
+### 4. Available Commands (Package.json)
+
+| Command | Purpose |
+|:--------|:--------|
+| pnpm dev | Start Vite Dev server |
+| pnpm build | Build production frontend |
+| pnpm preview | Preview production build |
+| pnpm lint | Run ESLint |
+| pnpm format | Run Prettier format check |
+| pnpm test | Run Vitest unit tests |
+
+---
+
+## 📚 Documentation
+
+- Form validation using Zod
+- State management using Immer
+- API calls with HttpClientManager SDK (pure-http-client-lib)
+- Modular component structure
+
+---
+
+## 📜 License
+
+MIT License © 2024
+```
+
+✅ XP Clean.
+✅ Developer friendly.
+✅ Open-source level professional README.md!
+
+---
+
+# 📚 WHAT YOU SHOULD DO:
+
+✅ Create file:
+📄 `apps/frontend/README.md`
+
+✅ Paste the above content ✅
+
+✅ Update `<your-username>` and `<your-repo-name>` properly in badge links.
+
+---
+
+# 📚 BONUS AFTER THIS:
+
+| Task | Purpose |
+|:-----|:--------|
+| Create check-project-health.sh for frontend | (Optional) |
+| Create Makefile for frontend | (Optional) |
+| Connect frontend tests into GitHub Actions | (Optional) |
+
+✅ We can make frontend even XP cleaner later.
+
+---
