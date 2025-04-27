@@ -16,11 +16,11 @@ module.exports = {
         email: 'jane@example.com',
         createdAt: new Date(),
         updatedAt: new Date(),
-      }
+      },
     ]);
   },
 
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('users', null, {});
-  }
+  },
 };

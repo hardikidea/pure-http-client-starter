@@ -5,8 +5,8 @@
     "build": "tsc",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
-    "format": "prettier --check ./src/**/*.{ts,tsx}",
-    "format:fix": "prettier --write ./src/**/*.{ts,tsx}",
+    "format": "prettier --write src/**/*.{ts,js,json,md,yml}",
+    "format:fix": "prettier --write src/**/*.{ts,js,json,md,yml} --fix",
     "test": "vitest run",
     "dev": "ts-node src/app/apiServer.ts",
 

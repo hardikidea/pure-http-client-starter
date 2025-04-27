@@ -1,7 +1,7 @@
 // apps/backend/tests/app/apiServer.test.ts
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { ApiServer, ServerNotStartedError, ServerStartError } from '../../../src/app/apiServer';
+import { ApiServer, ServerNotStartedError } from '../../../src/app/apiServer';
 import request from 'supertest'; // For real HTTP calls
 
 let server: ApiServer;

@@ -15,7 +15,7 @@ export interface HttpResponse<T = unknown> {
 
 export class PureHttpClientManager extends EventEmitter {
   async send<T>(options: HttpRequestOptions): Promise<HttpResponse<T>> {
-    const { method, url, headers = {}, body } = options;
+    const { method, url } = options;
 
     console.log(`[HttpClientManager] Sending ${method} request to ${url}`);
 

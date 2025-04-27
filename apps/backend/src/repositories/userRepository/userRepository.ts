@@ -18,9 +18,9 @@ export class UserRepository implements BaseRepository<User> {
     return user;
   }
 
- async create(data: Optional<User, NullishPropertiesOf<User>>): Promise<User> {
-   return User.create(data);
- }
+  async create(data: Optional<User, NullishPropertiesOf<User>>): Promise<User> {
+    return User.create(data);
+  }
 
   async update(id: string, data: Partial<User>): Promise<User> {
     const user = await this.findById(id);
@@ -32,9 +32,9 @@ export class UserRepository implements BaseRepository<User> {
     const user = await this.findById(id);
     await user.destroy();
   }
-async bulkCreate(data: Optional<User, NullishPropertiesOf<User>>[]): Promise<User[]> {
-  return User.bulkCreate(data);
-}
+  async bulkCreate(data: Optional<User, NullishPropertiesOf<User>>[]): Promise<User[]> {
+    return User.bulkCreate(data); // prettier/prettier
+  }
 
   async bulkUpdate(data: { id: string; updates: Partial<User> }[]): Promise<User[]> {
     const updatedUsers: User[] = [];
@@ -50,10 +50,10 @@ async bulkCreate(data: Optional<User, NullishPropertiesOf<User>>[]): Promise<Use
     await User.destroy({ where: { id: ids } });
   }
 
-async upsert(data: Optional<User, NullishPropertiesOf<User>>): Promise<User> {
-  const [user] = await User.upsert(data, { returning: true });
-  return user;
-}
+  async upsert(data: Optional<User, NullishPropertiesOf<User>>): Promise<User> {
+    const [user] = await User.upsert(data, { returning: true });
+    return user;
+  }
 
   // XP Factory Methods
   static create(): UserRepository {

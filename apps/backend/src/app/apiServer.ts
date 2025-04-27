@@ -118,7 +118,7 @@ export class ApiServer {
     return (Math.floor(Math.random() * 1000) + 3000).toString();
   }
 
-  private _setupRouters() {
+  private _setupRouters(): void {
     this.registerRouter(mainRouter);
   }
 }

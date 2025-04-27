@@ -16,9 +16,9 @@ export class UserService {
     return this.userRepository.findById(id);
   }
 
-async createUser(data: Partial<Omit<User, 'id' | 'createdAt' | 'updatedAt'>>): Promise<User> {
-  return this.userRepository.create(data as Optional<User, NullishPropertiesOf<User>>);
-}
+  async createUser(data: Partial<Omit<User, 'id' | 'createdAt' | 'updatedAt'>>): Promise<User> {
+    return this.userRepository.create(data as Optional<User, NullishPropertiesOf<User>>);
+  }
 
   async updateUser(id: string, data: { name?: string; email?: string }): Promise<User> {
     return this.userRepository.update(id, data);

@@ -23,9 +23,7 @@ describe('UserRouter', () => {
   });
 
   it('should list users', async () => {
-    await request(server.app)
-      .post('/users')
-      .send({ name: 'User One', email: 'one@example.com' });
+    await request(server.app).post('/users').send({ name: 'User One', email: 'one@example.com' });
 
     const res = await request(server.app).get('/users');
     expect(res.status).toBe(200);
