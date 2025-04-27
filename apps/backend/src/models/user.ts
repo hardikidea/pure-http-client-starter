@@ -40,3 +40,6 @@ export class User extends Model<User> {
   @Column({ type: DataType.DATE })
   updatedAt!: Date;
 }
+
+// 👇 ADD THIS
+export default User;

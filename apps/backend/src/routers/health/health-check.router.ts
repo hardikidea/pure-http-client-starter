@@ -1,5 +1,5 @@
-import { Router } from '../routers/router';
 import { HealthController } from './health-controller';
+import { Router } from '../router';
 
 export function healthRouter(
   healthController: HealthController = new HealthController(),

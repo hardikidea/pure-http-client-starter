@@ -5,7 +5,7 @@ import z from 'zod';
 const envSchema = z.object({
   CLIENT_ORIGIN: z.string().url().default('http://localhost:3000'),
   DB_HOST: z.string().default('localhost'),
-  DB_NAME: z.string().default('sharelinks'),
+  DB_NAME: z.string().default('pure-http-client-starter'),
   DB_PASSWORD: z.string().default('postgres'),
   DB_PORT: z.string().default('5432'),
   DB_USERNAME: z.string().default('postgres'),

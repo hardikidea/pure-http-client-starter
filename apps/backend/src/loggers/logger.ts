@@ -1,22 +1,11 @@
 import { createLogger, format, Logger, transports } from 'winston';
 import env from '../env';
 import { EmittingTransport } from './emitter';
-import { asyncLocalStorage } from '../routers/oauth-middleware';
 
-const isLocalEnv = env.NODE_ENV === 'local';
+const isLocalEnv = env.NODE_ENV === 'development';
 const logFormat = isLocalEnv
   ? format.combine(format.colorize({ all: true }), format.simple())
-  : format.combine(
-      format.timestamp(),
-      format.json(),
-      format((context) => {
-        const clientId = asyncLocalStorage.getStore()?.get('clientId');
-        if (clientId) {
-          context.clientId = clientId;
-        }
-        return context;
-      })(),
-    );
+  : format.combine(format.timestamp(), format.json());
 
 const logger: Logger = createLogger({
   level: env.LOG_LEVEL,

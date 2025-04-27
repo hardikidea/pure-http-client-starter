@@ -6,7 +6,6 @@ const { DB_NAME, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT } = env;
 
 export function getDBOptions(): SequelizeOptions {
   const modelsPath = path.join(__dirname, '..', 'models');
-
   return {
     dialect: 'postgres',
     host: DB_HOST,
@@ -17,6 +16,6 @@ export function getDBOptions(): SequelizeOptions {
     logging: false,
     logQueryParameters: true,
     pool: { max: 50, min: 10, acquire: 80000, idle: 50000 },
-    models: [modelsPath],
+    models: [],
   };
 }
