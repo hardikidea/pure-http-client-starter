@@ -2,7 +2,8 @@ import { errorHandlingHandler } from './error-handling';
 import { InvalidRequestError } from './invalid-request-error';
 import { ZodError } from 'zod';
 import { Request, Response } from 'express';
-import { testResponse } from '../../test-helpers/new-test-response';
+import { testResponse } from '../../test/test-helpers/new-test-response';
+
 
 describe('ErrorHandling', () => {
   it('does nothing when no error', () => {

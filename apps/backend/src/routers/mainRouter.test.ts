@@ -3,7 +3,7 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
 import express from 'express';
-import { mainRouter } from '../../../src/routers/mainRouter';
+import { mainRouter } from './mainRouter';
 
 describe('mainRouter', () => {
   const app = express();
