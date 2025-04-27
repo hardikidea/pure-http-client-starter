@@ -23,6 +23,14 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        varsIgnorePattern: '^_', // ignore variables starting with "_"
+        argsIgnorePattern: '^_', // ignore function args starting with "_"
+        caughtErrorsIgnorePattern: '^_', // ignore catch blocks starting with "_"
+      },
+    ],
     'prettier/prettier': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/explicit-function-return-type': 'warn',
