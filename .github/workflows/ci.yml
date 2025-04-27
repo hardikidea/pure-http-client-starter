@@ -25,6 +25,12 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Backend Lint, Format, Test
+        run: cd apps/backend && make health-check
+
+      - name: Frontend Lint, Format, Test
+        run: cd apps/frontend && make health-check
+
       - name: Run Lint
         run: pnpm lint
 

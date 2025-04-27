@@ -4,7 +4,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --check src/**/*.{ts,tsx}",
+    "format:fix": "prettier --write src/**/*.{ts,tsx}",
+    "test": "vitest run",
+    "health-check": "bash check-project-health.sh"
   },
   "dependencies": {
     "react": "^18.0.0",
