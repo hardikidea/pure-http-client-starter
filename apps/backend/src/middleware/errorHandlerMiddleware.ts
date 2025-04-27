@@ -1,7 +1,6 @@
-// apps/backend/src/middleware/errorHandlerMiddleware.ts
-
 import { Request, Response, NextFunction } from 'express';
 import { Logger } from '../infrastructure/logger/logger';
+import { BaseException } from '../exceptions/baseException';
 
 export function errorHandlerMiddleware(
   err: Error,
@@ -12,6 +11,11 @@ export function errorHandlerMiddleware(
   Logger.error('Unhandled error:', err.message, err.stack);
 
   if (res.headersSent) {
+    return;
+  }
+
+  if (err instanceof BaseException) {
+    res.status(err.statusCode).json({ error: err.name, message: err.message });
     return;
   }
 
