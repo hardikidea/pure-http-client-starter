@@ -9,6 +9,7 @@
     "format:fix": "prettier --write src/**/*.{ts,js,json,md,yml} --fix",
     "test": "vitest run",
     "dev": "ts-node src/app/apiServer.ts",
+    "health-check": "bash check-project-health.sh",
 
     "migrate": "sequelize-cli db:migrate",
     "migrate:undo": "sequelize-cli db:migrate:undo",
