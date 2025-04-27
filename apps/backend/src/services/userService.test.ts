@@ -1,7 +1,6 @@
-// apps/backend/tests/services/userService.test.ts
-
 import { describe, it, expect, beforeEach } from 'vitest';
-import { UserService } from '../../../src/services/userService';
+import { UserService } from './userService';
+import { User } from '../models/user';
 
 describe('UserService', () => {
   let userService: UserService;
@@ -48,16 +47,16 @@ describe('UserService', () => {
 
   it('bulk creates users', async () => {
     const users = await userService.bulkCreateUsers([
-      { name: 'Bulk1', email: 'bulk1@example.com' },
-      { name: 'Bulk2', email: 'bulk2@example.com' },
+      { name: 'Bulk1', email: 'bulk1@example.com' } as unknown as User,
+      { name: 'Bulk2', email: 'bulk2@example.com' } as unknown as User,
     ]);
     expect(users.length).toBe(2);
   });
 
   it('bulk updates users', async () => {
     const users = await userService.bulkCreateUsers([
-      { name: 'BulkUpdate1', email: 'bulkupdate1@example.com' },
-      { name: 'BulkUpdate2', email: 'bulkupdate2@example.com' },
+      { name: 'BulkUpdate1', email: 'bulkupdate1@example.com' } as unknown as User,
+      { name: 'BulkUpdate2', email: 'bulkupdate2@example.com' } as unknown as User,
     ]);
 
     const updates = users.map((u) => ({
@@ -72,8 +71,8 @@ describe('UserService', () => {
 
   it('bulk deletes users', async () => {
     const users = await userService.bulkCreateUsers([
-      { name: 'BulkDelete1', email: 'bulkdelete1@example.com' },
-      { name: 'BulkDelete2', email: 'bulkdelete2@example.com' },
+      { name: 'BulkDelete1', email: 'bulkdelete1@example.com' } as unknown as User,
+      { name: 'BulkDelete2', email: 'bulkdelete2@example.com' } as unknown as User,
     ]);
 
     const ids = users.map((u) => u.id);
@@ -84,7 +83,10 @@ describe('UserService', () => {
   });
 
   it('upserts a new user', async () => {
-    const user = await userService.upsertUser({ name: 'UpsertMe', email: 'upsertme@example.com' });
+    const user = await userService.upsertUser({
+      name: 'UpsertMe',
+      email: 'upsertme@example.com',
+    } as unknown as User);
     expect(user.name).toBe('UpsertMe');
   });
 
@@ -97,7 +99,7 @@ describe('UserService', () => {
       id: created.id,
       name: 'Upserted',
       email: created.email,
-    });
+    } as unknown as User);
     expect(updated.name).toBe('Upserted');
   });
 });

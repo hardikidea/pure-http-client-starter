@@ -1,14 +1,12 @@
-// apps/backend/tests/routers/userRouter.test.ts
-
 import { describe, it, expect, beforeEach } from 'vitest';
 import request from 'supertest';
-import { ApiServer } from '../../../src/app/apiServer';
-import { UserRouter } from '../../../src/routers/userRouter';
+import { ApiServer } from '../app/apiServer';
+import { UserRouter } from './userRouter';
 
 let server: ApiServer;
 
 describe('UserRouter', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     server = ApiServer.createNull();
     server.registerRouter(UserRouter.createNull().expressRouterInstance);
   });
