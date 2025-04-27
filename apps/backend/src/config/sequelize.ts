@@ -16,6 +16,6 @@ export function getDBOptions(): SequelizeOptions {
     logging: false,
     logQueryParameters: true,
     pool: { max: 50, min: 10, acquire: 80000, idle: 50000 },
-    models: [],
+    models: [modelsPath],
   };
 }
