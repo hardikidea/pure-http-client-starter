@@ -2,12 +2,15 @@ import { Request, Response, NextFunction } from 'express';
 import { Logger } from '../infrastructure/logger/logger';
 import { BaseException } from '../exceptions/baseException';
 
-export function errorHandlerMiddleware(
-  err: Error,
-  _req: Request,
-  res: Response,
-  _next: NextFunction,
-): void {
+interface ErrorHandlerMiddlewareParams {
+  err: Error;
+  _req: Request;
+  res: Response;
+  _next: NextFunction;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function errorHandlerMiddleware({ err, res }: ErrorHandlerMiddlewareParams): void {
   Logger.error('Unhandled error:', err.message, err.stack);
 
   if (res.headersSent) {

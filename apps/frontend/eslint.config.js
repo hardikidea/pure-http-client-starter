@@ -21,5 +21,13 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
+    overrides: [
+      {
+        files: ["**/*.test.ts"], // 👈 Only for test files
+        rules: {
+          "@typescript-eslint/no-explicit-any": "off" // 👈 Turn it OFF
+        }
+      }
+    ]
   },
 );

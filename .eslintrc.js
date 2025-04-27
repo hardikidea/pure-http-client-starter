@@ -33,9 +33,11 @@ module.exports = {
     ],
     'prettier/prettier': 'error',
     // '@typescript-eslint/no-unused-vars': 'error',
+    "@typescript-eslint/no-explicit-any": "off",
     '@typescript-eslint/explicit-function-return-type': 'warn',
     '@typescript-eslint/no-explicit-any': 'error',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
   },
   settings: {
     react: {

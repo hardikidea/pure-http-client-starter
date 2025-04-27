@@ -17,6 +17,7 @@
     "seed:undo:all": "sequelize-cli db:seed:undo:all"
   },
   "dependencies": {
+    "axios-retry": "^4.5.0",
     "cors": "^2.8.5",
     "detect-port": "^2.1.0",
     "dotenv": "^16.5.0",
@@ -24,6 +25,7 @@
     "helmet": "^8.1.0",
     "immer": "^10.1.1",
     "lodash": "^4.17.21",
+    "logform": "^2.7.0",
     "pg": "^8.15.6",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
@@ -55,5 +57,8 @@
     "ts-node": "^10.9.2",
     "typescript": "^4.9.5",
     "vitest": "^3.1.2"
+  },
+  "eslintConfig": {
+    "extends": "./.eslintrc.json"
   }
 }
