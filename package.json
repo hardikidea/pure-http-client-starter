@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "pnpm --filter frontend dev & pnpm --filter backend dev",
+    "dev": "pnpm --filter frontend dev & pnpm --filter backend dev & pnpm --filter backend-template dev",
     "build": "pnpm --filter frontend build && pnpm --filter backend build && pnpm --filter shared build && pnpm --filter pure-http-client-lib build",
     "build:frontend": "pnpm --filter frontend build",
     "build:backend": "pnpm --filter backend build",

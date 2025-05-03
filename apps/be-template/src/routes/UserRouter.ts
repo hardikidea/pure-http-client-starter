@@ -3,6 +3,7 @@ import { UserController } from '../controllers/UserController';
 import { AuthMiddleware } from '../middlewares/AuthMiddleware';
 import { Context } from '../context/Context';
 import { UserSchema } from '../shared/schemas/UserSchema';
+import { ValidationMiddleware } from '../middlewares/ValidationMiddleware';
 
 export class UserRouter {
   readonly router: Router;
@@ -24,7 +25,7 @@ export class UserRouter {
     this.router.get(
       '/users',
       authMiddleware.authenticate.bind(authMiddleware),
-      context.validationMiddleware.body(UserSchema),
+      ValidationMiddleware.body(UserSchema),
       userController.getAllUsers.bind(userController)
     );
   }

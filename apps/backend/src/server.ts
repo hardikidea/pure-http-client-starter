@@ -8,6 +8,7 @@ const startApplication = async (): Promise<void> => {
     const server = ApiServer.create({
       routers: [routes()],
     });
+    console.log(+env.PORT, 'backend');
     await server.start(env.PORT);
 
     await ORM.getInstance().authenticate();

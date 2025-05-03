@@ -9,18 +9,18 @@ import { RequestIdMiddleware } from '../middlewares/RequestIdMiddleware';
 import { WinstonLoggerMiddleware } from '../middlewares/WinstonLoggerMiddleware';
 
 export class Context {
-  private validationMiddleware: ValidationMiddleware;
+  validationMiddleware: ValidationMiddleware;
 
   loggerMiddleware: LoggerMiddleware;
   requestIdMiddleware: RequestIdMiddleware;
 
-  private userService: UserService;
-  private productService: ProductService;
+  userService: UserService;
+  productService: ProductService;
 
-  private authMiddleware: AuthMiddleware;
+  authMiddleware: AuthMiddleware;
 
-  private userController: UserController;
-  private productController: ProductController;
+  userController: UserController;
+  productController: ProductController;
   winstonLoggerMiddleware: WinstonLoggerMiddleware;
 
 

@@ -1,5 +1,6 @@
-import { User } from '../models/User';
+import { User } from '../../domain/models/User';
 import { BaseRepository } from '../../shared/bases/BaseRepository';
+import { CreationAttributes } from 'sequelize';
 
 export class UserRepository extends BaseRepository<User> {
   constructor() {
@@ -7,7 +8,7 @@ export class UserRepository extends BaseRepository<User> {
   }
 
   protected nullObject(): User {
-    return User.build({ id: 'null', name: '' });
+    return User.build({ id: -1, name: 'Null', email: 'null@example.com' } as CreationAttributes<User>);
   }
 
   static create(): UserRepository {

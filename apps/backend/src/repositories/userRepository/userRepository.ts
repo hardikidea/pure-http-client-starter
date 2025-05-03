@@ -1,9 +1,9 @@
 import { BaseRepository } from '../baseRepository';
-import { User } from '../../models/user';
 import { UserNotFoundException } from '../../exceptions/userNotFoundException';
 import { StubbedUserRepository } from './stubbedUserRepository';
 import { Optional } from 'sequelize';
 import { NullishPropertiesOf } from 'sequelize/types/utils';
+import User from '../../models/user';
 
 export class UserRepository implements BaseRepository<User> {
   async findAll(): Promise<User[]> {
@@ -19,7 +19,8 @@ export class UserRepository implements BaseRepository<User> {
   }
 
   async create(data: Optional<User, NullishPropertiesOf<User>>): Promise<User> {
-    return User.create(data);
+    return User.build(data).save();
+    // return User.create(data);
   }
 
   async update(id: string, data: Partial<User>): Promise<User> {

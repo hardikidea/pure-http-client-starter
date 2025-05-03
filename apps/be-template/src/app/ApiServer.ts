@@ -9,7 +9,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
 
-export class App {
+export class ApiServer {
   private readonly app: Application;
   private readonly port: number;
   private readonly context: Context;
@@ -59,13 +59,13 @@ export class App {
     });
   }
 
-  static create(port: number): App {
+  static create(port: number): ApiServer {
     const context = Context.create();
-    return new App(port, context);
+    return new ApiServer(port, context);
   }
 
-  static createNull(port: number): App {
+  static createNull(port: number): ApiServer {
     const context = Context.createNull();
-    return new App(port, context);
+    return new ApiServer(port, context);
   }
 }

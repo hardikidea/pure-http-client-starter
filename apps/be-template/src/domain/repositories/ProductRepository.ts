@@ -1,5 +1,6 @@
 import { Product } from '../models/Product';
 import { BaseRepository } from '../../shared/bases/BaseRepository';
+import { CreationAttributes } from 'sequelize';
 
 export class ProductRepository extends BaseRepository<Product> {
   constructor() {
@@ -7,7 +8,7 @@ export class ProductRepository extends BaseRepository<Product> {
   }
 
   protected nullObject(): Product {
-    return Product.build({ id: 'null', name: '', price: 0 });
+    return Product.build({ id: -1, name: '', price: 0 } as CreationAttributes<Product>);
   }
 
   static create(): ProductRepository {

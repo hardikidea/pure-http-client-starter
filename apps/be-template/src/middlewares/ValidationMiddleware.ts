@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { ZodSchema, ZodError } from 'zod';
+import { ZodTypeAny, ZodError } from 'zod';
 
 export class ValidationMiddleware {
-  static body(schema: ZodSchema) {
+  static body(schema: ZodTypeAny) {
     return (req: Request, res: Response, next: NextFunction): void => {
       try {
         schema.parse(req.body);
@@ -23,7 +23,7 @@ export class ValidationMiddleware {
     };
   }
 
-  static query(schema: ZodSchema) {
+  static query(schema: ZodTypeAny) {
     return (req: Request, res: Response, next: NextFunction): void => {
       try {
         schema.parse(req.query);
@@ -44,7 +44,7 @@ export class ValidationMiddleware {
     };
   }
 
-  static params(schema: ZodSchema) {
+  static params(schema: ZodTypeAny) {
     return (req: Request, res: Response, next: NextFunction): void => {
       try {
         schema.parse(req.params);

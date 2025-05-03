@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import request from 'supertest';
-import { App } from '../../src/app/App';
+import { ApiServer } from '../app/ApiServer';
 
 describe('User API', () => {
-  const app = App.createNull(4000);
+  const app = ApiServer.createNull(4000);
 
   it('GET /api/users', async () => {
     const res = await request(app['app']).get('/api/users');

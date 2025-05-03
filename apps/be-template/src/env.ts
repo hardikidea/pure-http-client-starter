@@ -12,7 +12,7 @@ const envSchema = z.object({
   DB_USERNAME: z.string().default('postgres'),
   LOG_LEVEL: z.string().default('info'),
   NODE_ENV: z.string().default('development'),
-  PORT: z.string()
+  PORT: z.string(),
 });
 
 const envPath = path.resolve(__dirname, `../.env.dev`);
@@ -23,7 +23,7 @@ dotenv.config({ path: envPath  });
 const env = envSchema.safeParse(process.env);
 
 if (!env.success) {
-  console.error('❌ Invalid environment variables:', JSON.stringify(env.error.format(), null, 4));
+  console.error('❌ Invalid (be-template) environment variables:', JSON.stringify(env.error.format(), null, 4));
   process.exit(1);
 }
 
