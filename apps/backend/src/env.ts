@@ -12,11 +12,11 @@ const envSchema = z.object({
   DB_USERNAME: z.string().default('postgres'),
   LOG_LEVEL: z.string().default('info'),
   NODE_ENV: z.string().default('development'),
-  PORT: z.string()
+  PORT: z.string(),
 });
 
 const envPath = path.resolve(__dirname, `../.env.dev`);
-dotenv.config({ path: envPath  });
+dotenv.config({ path: envPath });
 
 // Ignore lint rule here because we need it to parse the environment variables
 // eslint-disable-next-line no-process-env

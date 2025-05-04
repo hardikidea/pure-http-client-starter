@@ -8,7 +8,11 @@ export class UserRepository extends BaseRepository<User> {
   }
 
   protected nullObject(): User {
-    return User.build({ id: -1, name: 'Null', email: 'null@example.com' } as CreationAttributes<User>);
+    return User.build({
+      id: -1,
+      name: 'Null',
+      email: 'null@example.com',
+    } as CreationAttributes<User>);
   }
 
   static create(): UserRepository {

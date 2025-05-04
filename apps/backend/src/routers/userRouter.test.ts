@@ -1,7 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import request from 'supertest';
-import { UserRouter } from './userRouter';
-import { ApiServer } from '../app/api-server';
 import express from 'express';
 import { mainRouter } from './mainRouter';
 
@@ -47,9 +45,7 @@ describe('UserRouter', () => {
       .post('/users')
       .send({ name: 'UpdateMe', email: 'updateme@example.com' });
 
-    const res = await request(app)
-      .patch(`/users/${created.body.id}`)
-      .send({ name: 'UpdatedName' });
+    const res = await request(app).patch(`/users/${created.body.id}`).send({ name: 'UpdatedName' });
 
     expect(res.status).toBe(200);
     expect(res.body.name).toBe('UpdatedName');

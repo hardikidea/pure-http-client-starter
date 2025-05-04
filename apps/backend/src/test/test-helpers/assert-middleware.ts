@@ -7,7 +7,7 @@ export const assertMiddleware = async (
   handler: Middleware,
   reqValues: Parameters<typeof buildTestRequest>[0],
   expectedStatus?: number,
-  expectedResponse?: any
+  expectedResponse?: unknown,
 ): Promise<void> => {
   const { req } = buildTestRequest(reqValues);
   const res = buildTestResponse();

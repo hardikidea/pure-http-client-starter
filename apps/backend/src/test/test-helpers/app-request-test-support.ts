@@ -14,7 +14,7 @@ export const testHttpClient = (app: Application): TestHttpClientWithAuth => {
     ...requestAgent,
     withAuthToken: (authToken: string) => {
       return superTestRequest(app, authToken);
-    }
+    },
   };
 };
 
@@ -24,15 +24,32 @@ export const testApiServer = (routers: Router) => {
 };
 
 export interface TestHttpClient {
-  post<TResponse = any, TBody = any>(url: string, body: TBody, headers?: IncomingHttpHeaders): Promise<Response<TResponse>>;
+  post<TResponse = unknown, TBody = unknown>(
+    url: string,
+    body: TBody,
+    headers?: IncomingHttpHeaders,
+  ): Promise<Response<TResponse>>;
 
-  get<TResponse = any>(url: string, headers?: IncomingHttpHeaders): Promise<Response<TResponse>>;
+  get<TResponse = unknown>(
+    url: string,
+    headers?: IncomingHttpHeaders,
+  ): Promise<Response<TResponse>>;
 
-  put(url: string, body: any, headers?: IncomingHttpHeaders): any;
+  put<TResponse = unknown, TBody = unknown>(
+    url: string,
+    body: TBody,
+    headers?: IncomingHttpHeaders,
+  ): Promise<Response<TResponse>>;
 
-  delete(url: string, headers?: IncomingHttpHeaders): any;
+  delete<TResponse = unknown>(
+    url: string,
+    headers?: IncomingHttpHeaders,
+  ): Promise<Response<TResponse>>;
 
-  purge(url: string, headers?: IncomingHttpHeaders): any;
+  purge<TResponse = unknown>(
+    url: string,
+    headers?: IncomingHttpHeaders,
+  ): Promise<Response<TResponse>>;
 }
 
 export interface Response<T> {
@@ -41,9 +58,9 @@ export interface Response<T> {
 }
 
 export const superTestRequest = (app: Application, authToken?: string): TestHttpClient => {
-  const requestHeaders: any = {
+  const requestHeaders: Record<string, string> = {
     'Content-Type': 'application/json',
-    Accept: 'application/json'
+    Accept: 'application/json',
   };
 
   if (authToken) {
@@ -51,32 +68,63 @@ export const superTestRequest = (app: Application, authToken?: string): TestHttp
   }
 
   return {
-    post: <TResponse = any, TBody = any>(url: string, data: TBody, headers: IncomingHttpHeaders = {}): Promise<Response<TResponse>> =>
-      supertest
+    post: async <TResponse = unknown, TBody = unknown>(
+      url: string,
+      data: TBody,
+      headers: IncomingHttpHeaders = {},
+    ): Promise<Response<TResponse>> => {
+      const res = await supertest
         .agent(app)
         .post(url)
         .set({ ...requestHeaders, ...headers })
-        .send(data as object),
-    get: (url: string, headers: IncomingHttpHeaders = {}) =>
-      supertest
+        .send(data as object);
+      return { body: res.body, status: res.status };
+    },
+
+    get: async <TResponse = unknown>(
+      url: string,
+      headers: IncomingHttpHeaders = {},
+    ): Promise<Response<TResponse>> => {
+      const res = await supertest
         .agent(app)
         .get(url)
-        .set({ ...requestHeaders, ...headers }),
-    put: (url: string, body: any, headers: IncomingHttpHeaders = {}) =>
-      supertest
+        .set({ ...requestHeaders, ...headers });
+      return { body: res.body, status: res.status };
+    },
+
+    put: async <TResponse = unknown, TBody = unknown>(
+      url: string,
+      body: TBody,
+      headers: IncomingHttpHeaders = {},
+    ): Promise<Response<TResponse>> => {
+      const res = await supertest
         .agent(app)
         .put(url)
         .set({ ...requestHeaders, ...headers })
-        .send(body),
-    delete: (url: string, headers: IncomingHttpHeaders = {}) =>
-      supertest
+        .send(body);
+      return { body: res.body, status: res.status };
+    },
+
+    delete: async <TResponse = unknown>(
+      url: string,
+      headers: IncomingHttpHeaders = {},
+    ): Promise<Response<TResponse>> => {
+      const res = await supertest
         .agent(app)
         .delete(url)
-        .set({ ...requestHeaders, ...headers }),
-    purge: (url: string, headers: IncomingHttpHeaders = {}) =>
-      supertest
+        .set({ ...requestHeaders, ...headers });
+      return { body: res.body, status: res.status };
+    },
+
+    purge: async <TResponse = unknown>(
+      url: string,
+      headers: IncomingHttpHeaders = {},
+    ): Promise<Response<TResponse>> => {
+      const res = await supertest
         .agent(app)
         .purge(url)
-        .set({ ...requestHeaders, ...headers })
+        .set({ ...requestHeaders, ...headers });
+      return { body: res.body, status: res.status };
+    },
   };
 };

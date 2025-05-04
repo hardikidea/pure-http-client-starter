@@ -6,14 +6,14 @@ export function testResponse(): Response {
 
 export class TestResponse {
   statusCode = 200;
-  body: any = {};
+  body: unknown = {};
 
-  status(statusCode: number) {
+  status(statusCode: number): this {
     this.statusCode = statusCode;
     return this;
   }
 
-  send(body: any) {
+  send(body: unknown): this {
     this.body = body;
     return this;
   }

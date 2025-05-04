@@ -16,14 +16,17 @@ const envSchema = z.object({
 });
 
 const envPath = path.resolve(__dirname, `../.env.dev`);
-dotenv.config({ path: envPath  });
+dotenv.config({ path: envPath });
 
 // Ignore lint rule here because we need it to parse the environment variables
 // eslint-disable-next-line no-process-env
 const env = envSchema.safeParse(process.env);
 
 if (!env.success) {
-  console.error('❌ Invalid (be-template) environment variables:', JSON.stringify(env.error.format(), null, 4));
+  console.error(
+    '❌ Invalid (be-template) environment variables:',
+    JSON.stringify(env.error.format(), null, 4),
+  );
   process.exit(1);
 }
 

@@ -38,6 +38,7 @@
     "vitest": "^3.1.2"
   },
   "dependencies": {
-    "detect-port": "^2.1.0"
+    "detect-port": "^2.1.0",
+    "terraform": "^1.23.0"
   }
 }

@@ -11,10 +11,10 @@ export class ValidationMiddleware {
         if (error instanceof ZodError) {
           res.status(400).json({
             message: 'Validation failed',
-            errors: error.errors.map(e => ({
+            errors: error.errors.map((e) => ({
               path: e.path.join('.'),
-              message: e.message
-            }))
+              message: e.message,
+            })),
           });
         } else {
           next(error);
@@ -32,10 +32,10 @@ export class ValidationMiddleware {
         if (error instanceof ZodError) {
           res.status(400).json({
             message: 'Validation failed',
-            errors: error.errors.map(e => ({
+            errors: error.errors.map((e) => ({
               path: e.path.join('.'),
-              message: e.message
-            }))
+              message: e.message,
+            })),
           });
         } else {
           next(error);
@@ -53,10 +53,10 @@ export class ValidationMiddleware {
         if (error instanceof ZodError) {
           res.status(400).json({
             message: 'Validation failed',
-            errors: error.errors.map(e => ({
+            errors: error.errors.map((e) => ({
               path: e.path.join('.'),
-              message: e.message
-            }))
+              message: e.message,
+            })),
           });
         } else {
           next(error);

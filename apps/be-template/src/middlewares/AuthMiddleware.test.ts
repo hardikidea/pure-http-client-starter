@@ -9,7 +9,9 @@ describe('AuthMiddleware', () => {
     let nextCalled = false;
     const req = {} as Request;
     const res = {} as Response;
-    const next: NextFunction = () => { nextCalled = true; };
+    const next: NextFunction = () => {
+      nextCalled = true;
+    };
 
     middleware.authenticate(req, res, next);
     expect(nextCalled).toBe(true);

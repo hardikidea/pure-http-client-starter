@@ -8,7 +8,7 @@ export const buildTestResponse = (opts?: { clientId: string }): Response => {
     header: vi.fn(),
     writeHead: vi.fn(),
     write: vi.fn(),
-    locals: opts?.clientId ? { jwt: { claims: { cid: opts.clientId } } } : {}
+    locals: opts?.clientId ? { jwt: { claims: { cid: opts.clientId } } } : {},
   } as unknown as Response;
   return res;
 };

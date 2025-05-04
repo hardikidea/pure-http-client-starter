@@ -1,10 +1,6 @@
 import { Express } from 'express';
 import swaggerUi from 'swagger-ui-express';
-import {
-  OpenAPIRegistry,
-  OpenApiGeneratorV3,
-  extendZodWithOpenApi,
-} from 'zod-to-openapi';
+import { OpenAPIRegistry, OpenApiGeneratorV3, extendZodWithOpenApi } from 'zod-to-openapi';
 import { z } from 'zod';
 
 import { UserSchema } from '../shared/schemas/UserSchema';

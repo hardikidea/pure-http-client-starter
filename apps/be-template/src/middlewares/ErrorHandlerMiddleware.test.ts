@@ -15,7 +15,7 @@ describe('ErrorHandlerMiddleware', () => {
       },
       json(payload: any) {
         expect(payload.message).toBe('Something broke');
-      }
+      },
     } as unknown as Response;
     const next = {} as NextFunction;
 

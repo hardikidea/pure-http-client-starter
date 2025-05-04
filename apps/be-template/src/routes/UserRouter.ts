@@ -26,7 +26,7 @@ export class UserRouter {
       '/users',
       authMiddleware.authenticate.bind(authMiddleware),
       ValidationMiddleware.body(UserSchema),
-      userController.getAllUsers.bind(userController)
+      userController.getAllUsers.bind(userController),
     );
   }
 
@@ -37,6 +37,4 @@ export class UserRouter {
   static createNull(): UserRouter {
     return new UserRouter(UserController.createNull(), AuthMiddleware.createNull());
   }
-
-
 }

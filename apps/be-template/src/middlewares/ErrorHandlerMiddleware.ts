@@ -14,10 +14,10 @@ export class ErrorHandlerMiddleware {
         'Validation failed',
         'VALIDATION_ERROR',
         400,
-        error.errors.map(e => ({
+        error.errors.map((e) => ({
           path: e.path.join('.'),
-          message: e.message
-        }))
+          message: e.message,
+        })),
       );
       return this.respond(res, formatted);
     }
@@ -38,7 +38,7 @@ export class ErrorHandlerMiddleware {
     res.status(err.statusCode).json({
       type: err.type,
       message: err.message,
-      ...(err.details ? { details: err.details } : {})
+      ...(err.details ? { details: err.details } : {}),
     });
   }
 

@@ -9,14 +9,10 @@ const logFormatDev = combine(
   errors({ stack: true }),
   printf(({ level, message, timestamp, stack }) => {
     return `[${timestamp}] ${level}: ${stack || message}`;
-  })
+  }),
 );
 
-const logFormatProd = combine(
-  timestamp(),
-  errors({ stack: true }),
-  json()
-);
+const logFormatProd = combine(timestamp(), errors({ stack: true }), json());
 
 const loggerTransports = [
   new transports.Console(),
@@ -31,10 +27,10 @@ const loggerTransports = [
   new DailyRotateFile({
     filename: 'logs/error-%DATE%.log',
     datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,           // compress old logs
-    maxSize: '20m',                 // max size per file
-    maxFiles: '14d',                // keep for 14 days
-    level: 'error'
+    zippedArchive: true, // compress old logs
+    maxSize: '20m', // max size per file
+    maxFiles: '14d', // keep for 14 days
+    level: 'error',
   }),
 
   // 🔥 Daily rotated combined logs
@@ -43,16 +39,13 @@ const loggerTransports = [
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
     maxSize: '20m',
-    maxFiles: '14d'
-  })
+    maxFiles: '14d',
+  }),
 ];
 
 export const WinstonLogger = createLogger({
   level: process.env.LOG_LEVEL || 'info',
   format: process.env.NODE_ENV === 'production' ? logFormatProd : logFormatDev,
-  transports: [
-    ...loggerTransports,
-    new transports.Console()
-  ],
-  exitOnError: false
+  transports: [...loggerTransports, new transports.Console()],
+  exitOnError: false,
 });

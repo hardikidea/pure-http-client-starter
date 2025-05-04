@@ -8,7 +8,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 
-
 export class ApiServer {
   private readonly app: Application;
   private readonly port: number;
@@ -20,7 +19,9 @@ export class ApiServer {
     this.context = context;
 
     this.app.use(this.context.requestIdMiddleware.assignId.bind(this.context.requestIdMiddleware));
-    this.app.use(this.context.winstonLoggerMiddleware.logRequest.bind(this.context.winstonLoggerMiddleware)); // <<< use Winston log
+    this.app.use(
+      this.context.winstonLoggerMiddleware.logRequest.bind(this.context.winstonLoggerMiddleware),
+    ); // <<< use Winston log
 
     this.app.use(this.context.loggerMiddleware.logRequest.bind(this.context.loggerMiddleware));
     this.app.use(cors());
@@ -29,8 +30,8 @@ export class ApiServer {
     this.app.use(
       rateLimit({
         windowMs: 15 * 60 * 1000, // 15 minutes
-        max: 100
-      })
+        max: 100,
+      }),
     );
 
     this.setupMiddleware();

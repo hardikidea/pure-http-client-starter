@@ -14,7 +14,10 @@
     "migrate:undo": "sequelize-cli db:migrate:undo",
     "migrate:status": "sequelize-cli db:migrate:status",
     "seed:all": "sequelize-cli db:seed:all",
-    "seed:undo:all": "sequelize-cli db:seed:undo:all"
+    "seed:undo:all": "sequelize-cli db:seed:undo:all",
+    "run:docker": "docker-compose up --build",
+    "run:docker:test": "pnpm --filter backend-template test",
+    "seed": "ts-node src/seeds/DatabaseSeeder.ts"
   },
   "dependencies": {
     "axios-retry": "^4.5.0",

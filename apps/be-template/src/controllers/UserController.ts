@@ -22,5 +22,4 @@ export class UserController {
     const data = req.body;
     res.status(201).json({ id: 'generated-id', ...data });
   }
-
 }

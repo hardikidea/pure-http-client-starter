@@ -23,7 +23,7 @@ export class ProductRouter {
     this.router.get(
       '/products',
       authMiddleware.authenticate.bind(authMiddleware),
-      productController.getAllProducts.bind(productController)
+      productController.getAllProducts.bind(productController),
     );
   }
 

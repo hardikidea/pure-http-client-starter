@@ -7,7 +7,7 @@ import {
   AutoIncrement,
   Unique,
   CreatedAt,
-  UpdatedAt
+  UpdatedAt,
 } from 'sequelize-typescript';
 
 @Table({ tableName: 'users' })

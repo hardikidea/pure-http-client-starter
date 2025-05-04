@@ -11,7 +11,7 @@ describe('UserController', () => {
       json: (output: unknown) => {
         expect(Array.isArray(output)).toBe(true);
         expect((output as Array<unknown>).length).toBe(0);
-      }
+      },
     } as unknown as Response;
 
     await controller.getAllUsers(req, res);

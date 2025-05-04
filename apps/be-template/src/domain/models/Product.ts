@@ -1,6 +1,5 @@
 import { AutoIncrement, Column, DataType, Model, PrimaryKey, Table } from 'sequelize-typescript';
 
-
 @Table({ tableName: 'products' })
 export class Product extends Model<Product> {
   @PrimaryKey

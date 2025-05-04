@@ -23,7 +23,6 @@ export class Context {
   productController: ProductController;
   winstonLoggerMiddleware: WinstonLoggerMiddleware;
 
-
   constructor() {
     this.validationMiddleware = ValidationMiddleware.create();
     this.winstonLoggerMiddleware = WinstonLoggerMiddleware.create();
@@ -45,7 +44,7 @@ export class Context {
   }
 
   static createNull(): Context {
-    let ctx = new Context();
+    const ctx = new Context();
     ctx.winstonLoggerMiddleware = WinstonLoggerMiddleware.createNull();
 
     ctx.validationMiddleware = ValidationMiddleware.createNull();

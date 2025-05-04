@@ -4,7 +4,6 @@ import { ZodError } from 'zod';
 import { Request, Response } from 'express';
 import { testResponse } from '../../test/test-helpers/new-test-response';
 
-
 describe('ErrorHandling', () => {
   it('does nothing when no error', () => {
     const handler = errorHandlingHandler((_request: Request, response: Response) => {

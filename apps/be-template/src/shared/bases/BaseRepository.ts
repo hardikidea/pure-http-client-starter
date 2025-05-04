@@ -1,9 +1,10 @@
 import { BaseModel } from './BaseModel';
+import { ModelStatic } from 'sequelize';
 
 export abstract class BaseRepository<T extends BaseModel<T>> {
-  protected readonly model: any;
+  protected readonly model: ModelStatic<T>;
 
-  constructor(model: any) {
+  constructor(model: ModelStatic<T>) {
     this.model = model;
   }
 

@@ -12,7 +12,7 @@ export const buildTestRequest = (reqOptions?: {
     params,
     body,
     headers,
-    on: requestEventEmitter.on.bind(requestEventEmitter)
+    on: requestEventEmitter.on.bind(requestEventEmitter),
   } as unknown as Request;
 
   return { req, eventEmitter: requestEventEmitter };
